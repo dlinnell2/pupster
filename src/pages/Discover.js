@@ -8,6 +8,7 @@ class Discover extends Component {
     state = {
         image: "",
         match: false,
+        matchCount: 0,
     }
 
     componentDidMount(){
@@ -28,7 +29,12 @@ class Discover extends Component {
         const newState = {...this.state};
 
         if (type === "success"){
-            newState.match = true;
+            newState.match = 1 === Math.floor(Math.random() * 5) + 1
+
+            newState.matchCount = newState.match
+                ? newState.matchCount +1
+                : newState.matchCount
+
         } else {
             newState.match = false;
         }
@@ -46,6 +52,7 @@ class Discover extends Component {
                 <h3 className="text-center">Click green on any dogs you'd like to meet!</h3>
 
                 <Card image={this.state.image} onClick={this.handleBtnClick}/>
+                <p>{this.state.matchCount}</p>
             </div>
         )
     }
