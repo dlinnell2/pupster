@@ -6,7 +6,8 @@ import API from "../utils/API"
 class Discover extends Component {
 
     state = {
-        image: ""
+        image: "",
+        match: false,
     }
 
     componentDidMount(){
@@ -21,12 +22,20 @@ class Discover extends Component {
             .catch(err => console.log(err))
     }
 
-    handleBtnClick = () => {
-        API.getRandomDog()
-        .then(res => this.setState({
-            image:res.data.message
-        }))
-        .catch(err => console.log(err))
+    handleBtnClick = (event) => {
+
+        const type = event.target.attributes.getNamedItem("data-value").value;
+        const newState = {...this.state};
+
+        if (type === "success"){
+            newState.match = true;
+        } else {
+            newState.match = false;
+        }
+
+        this.setState(newState);
+        this.loadNextDog();
+
     }
 
     render() {
