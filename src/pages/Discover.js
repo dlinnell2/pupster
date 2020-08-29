@@ -44,6 +44,14 @@ class Discover extends Component {
 
     }
 
+    checkForMatch (){
+        if(this.state.match){
+            return(
+                <Alert />
+            )
+        }
+    }
+
     render() {
         return (
             <div>
@@ -53,7 +61,7 @@ class Discover extends Component {
 
                 <Card image={this.state.image} onClick={this.handleBtnClick}/>
                 <h5 className="text-center">You've matched with {this.state.matchCount} dogs so far!</h5>
-                <Alert />
+                {this.checkForMatch()}
             </div>
         )
     }
