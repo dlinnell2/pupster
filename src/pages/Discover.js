@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
-import CardBtn from "../components/CardBtn";
+import Alert from "../components/Alert";
 import API from "../utils/API"
 
 class Discover extends Component {
@@ -52,7 +52,8 @@ class Discover extends Component {
                 <h3 className="text-center">Click green on any dogs you'd like to meet!</h3>
 
                 <Card image={this.state.image} onClick={this.handleBtnClick}/>
-                <p>{this.state.matchCount}</p>
+                <h5 className="text-center">You've matched with {this.state.matchCount} dogs so far!</h5>
+                <Alert />
             </div>
         )
     }
