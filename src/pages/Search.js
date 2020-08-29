@@ -1,11 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
+import SearchForm from "../components/SearchForm"
 
-const Search = () => {
-    return(
-    <div>
+class Search extends Component {
 
-    </div>
-    )
+    state = {
+        breedList:[]
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="jumbotron">
+                    <h1 className="text-center">Search by dog breed!</h1>
+                </div>
+                <SearchForm />
+            </div>
+        )
+    }
 }
 
 export default Search;
