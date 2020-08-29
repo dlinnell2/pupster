@@ -21,6 +21,14 @@ class Discover extends Component {
             .catch(err => console.log(err))
     }
 
+    handleBtnClick = () => {
+        API.getRandomDog()
+        .then(res => this.setState({
+            image:res.data.message
+        }))
+        .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <div>
@@ -28,7 +36,7 @@ class Discover extends Component {
                 <h1 className="text-center">Make new friends!</h1>
                 <h3 className="text-center">Click green on any dogs you'd like to meet!</h3>
 
-                <Card image={this.state.image}/>
+                <Card image={this.state.image} onClick={this.handleBtnClick}/>
             </div>
         )
     }
