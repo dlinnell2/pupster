@@ -17,7 +17,15 @@ const SearchForm = props => {
                 <datalist id="breeds">
                     {props.breeds.map(breed => <option value={breed} key={breed} />)}
                 </datalist>
+
             </div>
+            <button
+                type="sumbit"
+                onClick={props.handleFormSubmit}
+                className="btn btn-success searchButton"
+            >
+                Search
+                </button>
         </form>
     )
 }
