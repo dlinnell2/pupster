@@ -5,18 +5,18 @@ const SearchForm = props => {
         <form>
             <div className="form-group">
                 <label htmlFor="breedInput">Breed Name:</label>
-            <input 
-            type="text"
-            className="form-control"
-            id="breedInput"
-            placeholder="Type a dog breed"
-            list="breeds"
-            onChange={props.handleInput}
-            value={props.search}
-            />
-            <datalist id="breeds">
-
-            </datalist>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="breedInput"
+                    placeholder="Type a dog breed"
+                    list="breeds"
+                    onChange={props.handleInput}
+                    value={props.search}
+                />
+                <datalist id="breeds">
+                    {props.breeds.map(breed => <option value={breed} key={breed} />)}
+                </datalist>
             </div>
         </form>
     )

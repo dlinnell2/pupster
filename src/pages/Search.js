@@ -5,16 +5,19 @@ import API from "../utils/API"
 class Search extends Component {
 
     state = {
-        breedList:[],
+        breeds:[],
         search:"",
         results:[]
     }
 
     componentDidMount(){
         API.getBreedList()
-        .then(res => this.setState({
-            breedList:res.data.message
-        }))
+        .then(res => {
+            const breeds = Object.keys(res.data.message);
+            this.setState({
+                breeds: breeds
+            })
+        })
         .catch(err => console.log(err))
     }
 
@@ -29,7 +32,7 @@ class Search extends Component {
                     <h1 className="text-center">Search by dog breed!</h1>
                 </div>
                 <SearchForm 
-                datalist={this.state.breedList}
+                breeds={this.state.breeds}
                 handleInput={this.handleInput}
                 search={this.state.search}
                 />
