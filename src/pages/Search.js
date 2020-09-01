@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/Card";
+import SearchResults from "../components/SearchResults";
 import API from "../utils/API"
 
 class Search extends Component {
@@ -29,7 +29,9 @@ class Search extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         API.getBreedImages(this.state.search)
-        .then(res => console.log(res.data.message))
+        .then(res => this.setState({
+            results:res.data.message
+        }))
     }
 
     render() {
@@ -44,6 +46,8 @@ class Search extends Component {
                 search={this.state.search}
                 handleFormSubmit={this.handleFormSubmit}
                 />
+                <SearchResults
+                results={this.state.results}/>
             </div>
         )
     }
